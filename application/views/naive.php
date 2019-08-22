@@ -23,8 +23,8 @@
 			<tr>
 				<td><?php echo $h->id_hasil  ?></td>
 				<td><?php echo $h->anak_id  ?></td>
-				<td><?php echo $h->kondisi_id  ?></td>
-				<td><?php echo $h->gejala_id  ?></td>
+				<td><?php echo $h->id_kondisi  ?></td>
+				<td><?php echo $h->id_gejala  ?></td>
 				<td><?php echo $h->hari_ke  ?></td>
 			</tr>
 			<?php } ?>

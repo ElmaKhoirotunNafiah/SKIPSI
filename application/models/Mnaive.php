@@ -25,5 +25,9 @@ class Mnaive extends CI_Model {
 		$data = $this->db->query("select sum(h.kondisi_id) as jumlah, u.nama_anak from hasil h inner join user_anak u on h.anak_id=u.id where gejala_id = '$gejala' and anak_id = $anak");
 		return $data;
 	}
+
+	function input($data,$table){
+		$this->db->insert($table,$data);
+  	}
 }
 ?>

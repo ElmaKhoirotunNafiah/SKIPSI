@@ -33,7 +33,8 @@ class Naive extends CI_Controller {
 				}
 			}
 		}
-		// $data['arr'][][19]
+		//print_r($data['arr']);
+		
 		for($i=0;$i<90;$i++){
 			// mencari total nilai tiap sub gejala
 			// $data['arr'][$i][19] = $data['arr'][$i][1] + $data['arr'][$i][2] +$data['arr'][$i][3] + $data['arr'][$i][4] + $data['arr'][$i][5] + $data['arr'][$i][6];
@@ -187,6 +188,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][1] = $tempRC/$temp3;
 			$data['religi'][4][1] = $tempRK/$temp2;
 			$data['religi'][5][1] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][1],
+			// 	'sangat_baik' => $data['religi'][1][1],
+			// 	'baik' => $data['religi'][2][1],
+			// 	'cukup' => $data['religi'][3][1],
+			// 	'kurang' => $data['religi'][4][1],
+			// 	'sangat_kurang' => $data['religi'][5][1]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 
 			//sangat baik - Hasil
 			$tempRS = 0;
@@ -221,6 +231,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][2] = $tempRC/$temp3;
 			$data['religi'][4][2] = $tempRK/$temp2;
 			$data['religi'][5][2] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][2],
+			// 	'sangat_baik' => $data['religi'][1][2],
+			// 	'baik' => $data['religi'][2][2],
+			// 	'cukup' => $data['religi'][3][2],
+			// 	'kurang' => $data['religi'][4][2],
+			// 	'sangat_kurang' => $data['religi'][5][2]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 		
 			//baik - hasil
 			$tempRS = 0;
@@ -255,6 +274,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][3] = $tempRC/$temp3;
 			$data['religi'][4][3] = $tempRK/$temp2;
 			$data['religi'][5][3] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][3],
+			// 	'sangat_baik' => $data['religi'][1][3],
+			// 	'baik' => $data['religi'][2][3],
+			// 	'cukup' => $data['religi'][3][3],
+			// 	'kurang' => $data['religi'][4][3],
+			// 	'sangat_kurang' => $data['religi'][5][3]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 
 			//cukup - hasil
 			$tempRS = 0;
@@ -289,6 +317,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][4] = $tempRC/$temp3;
 			$data['religi'][4][4] = $tempRK/$temp2;
 			$data['religi'][5][4] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][4],
+			// 	'sangat_baik' => $data['religi'][1][4],
+			// 	'baik' => $data['religi'][2][4],
+			// 	'cukup' => $data['religi'][3][4],
+			// 	'kurang' => $data['religi'][4][4],
+			// 	'sangat_kurang' => $data['religi'][5][4]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 
 			//kurang - hasil
 			$tempRS = 0;
@@ -323,6 +360,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][5] = $tempRC/$temp3;
 			$data['religi'][4][5] = $tempRK/$temp2;
 			$data['religi'][5][5] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][5],
+			// 	'sangat_baik' => $data['religi'][1][5],
+			// 	'baik' => $data['religi'][2][5],
+			// 	'cukup' => $data['religi'][3][5],
+			// 	'kurang' => $data['religi'][4][5],
+			// 	'sangat_kurang' => $data['religi'][5][5]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 
 			//sangat kurang - hasil
 			$tempRS = 0;
@@ -357,6 +403,15 @@ class Naive extends CI_Controller {
 			$data['religi'][3][6] = $tempRC/$temp3;
 			$data['religi'][4][6] = $tempRK/$temp2;
 			$data['religi'][5][6] = 0;
+			// $simpan = array(
+			// 	'super' => $data['religi'][0][6],
+			// 	'sangat_baik' => $data['religi'][1][6],
+			// 	'baik' => $data['religi'][2][6],
+			// 	'cukup' => $data['religi'][3][6],
+			// 	'kurang' => $data['religi'][4][6],
+			// 	'sangat_kurang' => $data['religi'][5][6]
+			// );
+			// $this->Mnaive->input($simpan ,'religi');
 
 		//Sekolah
 		//Inisialisasi
@@ -401,6 +456,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][1] = $tempRC/$temp3;
 			$data['sekolah'][4][1] = $tempRK/$temp2;
 			$data['sekolah'][5][1] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][1],
+			// 	'sangat_baik' => $data['sekolah'][1][1],
+			// 	'baik' => $data['sekolah'][2][1],
+			// 	'cukup' => $data['sekolah'][3][1],
+			// 	'kurang' => $data['sekolah'][4][1],
+			// 	'sangat_kurang' => $data['sekolah'][5][1]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 
 			//sangat baik - Hasil
 			$tempRS = 0;
@@ -435,6 +499,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][2] = $tempRC/$temp3;
 			$data['sekolah'][4][2] = $tempRK/$temp2;
 			$data['sekolah'][5][2] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][2],
+			// 	'sangat_baik' => $data['sekolah'][1][2],
+			// 	'baik' => $data['sekolah'][2][2],
+			// 	'cukup' => $data['sekolah'][3][2],
+			// 	'kurang' => $data['sekolah'][4][2],
+			// 	'sangat_kurang' => $data['sekolah'][5][2]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 		
 			//baik - hasil
 			$tempRS = 0;
@@ -469,6 +542,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][3] = $tempRC/$temp3;
 			$data['sekolah'][4][3] = $tempRK/$temp2;
 			$data['sekolah'][5][3] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][3],
+			// 	'sangat_baik' => $data['sekolah'][1][3],
+			// 	'baik' => $data['sekolah'][2][3],
+			// 	'cukup' => $data['sekolah'][3][3],
+			// 	'kurang' => $data['sekolah'][4][3],
+			// 	'sangat_kurang' => $data['sekolah'][5][3]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 
 			//cukup - hasil
 			$tempRS = 0;
@@ -503,6 +585,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][4] = $tempRC/$temp3;
 			$data['sekolah'][4][4] = $tempRK/$temp2;
 			$data['sekolah'][5][4] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][4],
+			// 	'sangat_baik' => $data['sekolah'][1][4],
+			// 	'baik' => $data['sekolah'][2][4],
+			// 	'cukup' => $data['sekolah'][3][4],
+			// 	'kurang' => $data['sekolah'][4][4],
+			// 	'sangat_kurang' => $data['sekolah'][5][4]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 
 			//kurang - hasil
 			$tempRS = 0;
@@ -537,6 +628,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][5] = $tempRC/$temp3;
 			$data['sekolah'][4][5] = $tempRK/$temp2;
 			$data['sekolah'][5][5] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][5],
+			// 	'sangat_baik' => $data['sekolah'][1][5],
+			// 	'baik' => $data['sekolah'][2][5],
+			// 	'cukup' => $data['sekolah'][3][5],
+			// 	'kurang' => $data['sekolah'][4][5],
+			// 	'sangat_kurang' => $data['sekolah'][5][5]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 
 			//sangat kurang - hasil
 			$tempRS = 0;
@@ -571,6 +671,15 @@ class Naive extends CI_Controller {
 			$data['sekolah'][3][6] = $tempRC/$temp3;
 			$data['sekolah'][4][6] = $tempRK/$temp2;
 			$data['sekolah'][5][6] = 0;
+			// $simpan = array(
+			// 	'super' => $data['sekolah'][0][6],
+			// 	'sangat_baik' => $data['sekolah'][1][6],
+			// 	'baik' => $data['sekolah'][2][6],
+			// 	'cukup' => $data['sekolah'][3][6],
+			// 	'kurang' => $data['sekolah'][4][6],
+			// 	'sangat_kurang' => $data['sekolah'][5][6]
+			// );
+			// $this->Mnaive->input($simpan ,'sekolah');
 
 		//rumah
 		//Inisialisasi
@@ -616,6 +725,16 @@ class Naive extends CI_Controller {
 			$data['rumah'][4][1] = $tempRK/$temp2;
 			$data['rumah'][5][1] = 0;
 
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][1],
+			// 	'sangat_baik' => $data['rumah'][1][1],
+			// 	'baik' => $data['rumah'][2][1],
+			// 	'cukup' => $data['rumah'][3][1],
+			// 	'kurang' => $data['rumah'][4][1],
+			// 	'sangat_kurang' => $data['rumah'][5][1]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
+
 			//sangat baik - Hasil
 			$tempRS = 0;
 			$tempRSB = 0;
@@ -649,6 +768,16 @@ class Naive extends CI_Controller {
 			$data['rumah'][3][2] = $tempRC/$temp3;
 			$data['rumah'][4][2] = $tempRK/$temp2;
 			$data['rumah'][5][2] = 0;
+
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][2],
+			// 	'sangat_baik' => $data['rumah'][1][2],
+			// 	'baik' => $data['rumah'][2][2],
+			// 	'cukup' => $data['rumah'][3][2],
+			// 	'kurang' => $data['rumah'][4][2],
+			// 	'sangat_kurang' => $data['rumah'][5][2]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
 		
 			//baik - hasil
 			$tempRS = 0;
@@ -683,6 +812,15 @@ class Naive extends CI_Controller {
 			$data['rumah'][3][3] = $tempRC/$temp3;
 			$data['rumah'][4][3] = $tempRK/$temp2;
 			$data['rumah'][5][3] = 0;
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][3],
+			// 	'sangat_baik' => $data['rumah'][1][3],
+			// 	'baik' => $data['rumah'][2][3],
+			// 	'cukup' => $data['rumah'][3][3],
+			// 	'kurang' => $data['rumah'][4][3],
+			// 	'sangat_kurang' => $data['rumah'][5][3]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
 
 			//cukup - hasil
 			$tempRS = 0;
@@ -717,6 +855,15 @@ class Naive extends CI_Controller {
 			$data['rumah'][3][4] = $tempRC/$temp3;
 			$data['rumah'][4][4] = $tempRK/$temp2;
 			$data['rumah'][5][4] = 0;
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][4],
+			// 	'sangat_baik' => $data['rumah'][1][4],
+			// 	'baik' => $data['rumah'][2][4],
+			// 	'cukup' => $data['rumah'][3][4],
+			// 	'kurang' => $data['rumah'][4][4],
+			// 	'sangat_kurang' => $data['rumah'][5][4]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
 
 			//kurang - hasil
 			$tempRS = 0;
@@ -751,6 +898,15 @@ class Naive extends CI_Controller {
 			$data['rumah'][3][5] = $tempRC/$temp3;
 			$data['rumah'][4][5] = $tempRK/$temp2;
 			$data['rumah'][5][5] = 0;
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][5],
+			// 	'sangat_baik' => $data['rumah'][1][5],
+			// 	'baik' => $data['rumah'][2][5],
+			// 	'cukup' => $data['rumah'][3][5],
+			// 	'kurang' => $data['rumah'][4][5],
+			// 	'sangat_kurang' => $data['rumah'][5][5]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
 
 			//sangat kurang - hasil
 			$tempRS = 0;
@@ -785,9 +941,19 @@ class Naive extends CI_Controller {
 			$data['rumah'][3][6] = $tempRC/$temp3;
 			$data['rumah'][4][6] = $tempRK/$temp2;
 			$data['rumah'][5][6] = 0;
+			// $simpan = array(
+			// 	'super' => $data['rumah'][0][6],
+			// 	'sangat_baik' => $data['rumah'][1][6],
+			// 	'baik' => $data['rumah'][2][6],
+			// 	'cukup' => $data['rumah'][3][6],
+			// 	'kurang' => $data['rumah'][4][6],
+			// 	'sangat_kurang' => $data['rumah'][5][6]
+			// );
+			// $this->Mnaive->input($simpan ,'rumah');
 
 		//proses akhir
 		for ($i=0; $i < 90; $i++) {
+			
 			
 			//super
 			//#Religi
