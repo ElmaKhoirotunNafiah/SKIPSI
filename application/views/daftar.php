@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/img/logo_ss.png') ?>">
-	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url('assets/img/logo_ss.png') ?>">
+	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/img/apple-icon.png') ?>">
+	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url('assets/img/favicon.png') ?>">
 </head>
 <body>
     
@@ -38,28 +38,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img width="130px" height="80px" src="<?php echo base_url ()?>assets/img/logo_ss.png" alt="Klorofil Logo"></div>
-								<p class="lead">Login</p>
+								<h3>Daftar</h3>
 							</div>
-							<form class="form-auth-small" action="<?php echo base_url()?>/Login/login">
+							<form class="form-auth-small" method="post" action="<?php echo base_url()?>/Daftar/daftar" >
+                                <div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Nama Lengkap</label>
+									<input type="text"  name="nama_lengkap" class="form-control" id="nama_lengkap" placeholder="Nama Lengkap">
+								</div>
+                                <div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Kelas</label>
+									<input type="text"  name="kelas" class="form-control" id="kelas" placeholder="Kelas">
+								</div>
+                                <div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Golongan</label>
+									<input type="text"  name="golongan" class="form-control" id="golongan" placeholder="Golongan">
+								</div>
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Username</label>
-									<input type="username" class="form-control" id="signin-email" placeholder="Username">
+									<input type="text"  name="username" class="form-control" id="username" placeholder="Username">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" id="signin-password"  placeholder="Password">
+									<input type="password"  name="password" class="form-control" id="password"  placeholder="Password">
 								</div>
-								<div class="form-group clearfix">
-									<label class="fancy-checkbox element-left">
-										<input type="checkbox">
-										<span>Remember me</span>
-									</label>
-								</div>
-								<button type="submit" class="btn btn-primary btn-md btn-block">Login</button>
-								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock">&nbsp;Belum Memiliki Akun ? </i> <a href="<?php echo base_url()?>/Daftar">&nbsp; | Daftar |</a></span>
-								</div>
+                                <br>
+								<button type="submit" class="btn btn-primary btn-md btn-block">Daftar</button>
 							</form>
 						</div>
 					</div>

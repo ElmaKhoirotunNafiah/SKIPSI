@@ -1,12 +1,152 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-<!doctype html>
-<html lang="en">
-	
-<!-- MAIN -->
-		<div class="main">
+<div class="main">
 			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- OVERVIEW -->
+					<div class="panel">
+				        <div class="panel-heading">
+                            <h3 class="panel-title">Input Rule Gejala</h3>
+                        </div>
+				    <div class="panel-body">
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#modal_rule"><i class="fa fa-plus"></i>&nbsp;Tambah Rule Gejala</button>
+    <br>
+    <br>
+                
+<!-- Modal -->
+  <div class="modal fade" id="modal_rule" role="dialog">
+    <div class="modal-dialog">
+    
+<!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Input Rule Gejala </h4>
+        </div>
+    <form action="<?php echo base_url()?>/Rule/insert_rule" method="post">
+    <div class="modal-body">
+          <!-- INPUT GROUPS -->
+    <div class="panel">
+        <div class="panel-body">
+            
+        <label>Pernyataan Awal</label>
+        <br>
+            <div class="form-group">
+				 <select class="form-control" name="pertanyaan_1" id='id_pertanyaan_1' required>
+                <option value='' disabled selected>Pilih Pertanyaan</option>";
+                  <?php foreach($pertanyaan_awal as $p_awal){ ?>
+                  <option value="<?php echo $p_awal->id_gejala; ?>">[<?php echo $p_awal->id_gejala; ?>]  <?php echo $p_awal->nama_gejala; ?></option>
+                  <?php } ?>
+                  </select>
+            </div>
+            <br>
+            
+            <label>Jawaban Y</label>
+        <br>
+            <div class="form-group">
+				 <select class="form-control" name="jawab_Y" id='jawab_Y' required>
+                <option value='' disabled selected>Pilih Pertanyaan</option>";
+                  <?php foreach($pertanyaan_awal as $p_awal){ ?>
+                  <option value="<?php echo $p_awal->id_gejala; ?>">[<?php echo $p_awal->id_gejala; ?>] <?php echo $p_awal->nama_gejala; ?></option>
+                  <?php } ?>
+                  </select>
+            </div>
+            <br>
+            
+            <label>Jawaban T</label>
+        <br>
+            <div class="form-group">
+				 <select class="form-control" name="jawab_T" id='jawab_T' required>
+                <option value='' disabled selected>Pilih Pertanyaan</option>";
+                  <?php foreach($pertanyaan_awal as $p_awal){ ?>
+                  <option value="<?php echo $p_awal->id_gejala; ?>">[<?php echo $p_awal->id_gejala; ?>] <?php echo $p_awal->nama_gejala; ?></option>
+                  <?php } ?>
+                  </select>
+            </div>
+            <br>
+        
+         </div>
+    </div>
+<!-- END INPUT GROUPS -->
+    </div>
+    <div class="modal-footer">
+          <button type="submit" class="btn btn-info" >Simpan</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+</form>
+</div>
+</div>	
+</div>
+</div>
+                        <!-- END MAIN CONTENT -->
+
+<div class="panel">                        
+    <div class="container">
+        <h2>Data Rule Gejala</h2>
+        <p>Berisi data rule gejala yang telah diupload sebelumnya.</p>  
+     <br>
+        
+    <div class="col-lg-10">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>PERTANYAAN</th>
+        <th>YA</th>  
+        <th>TIDAK</th> 
+<!--        <th colspan="2">Opsi</th>-->
+          
+      </tr>
+    </thead>
+    <tbody>
+        <?php
+       $no = 1;
+                foreach($tampil_rule as $t_r){
+        ?>
+      <tr>
+        <td><?php echo $no++ ?></td>
+        <td><?php echo $t_r->nama_gejala; ?></td>
+        <td><?php echo $t_r->jawab_Y; ?></td>
+        <td><?php echo $t_r->jawab_T; ?></td>
+            
+<!--
+        <td><center>
+            <a href="<!-?php echo base_url()?>Rule/pindah_edit_rule/<!-?php echo $t_r->ID_GEJALA; ?>"><button class="btn btn-xs btn-primary tbl_edit_rule"
+                    id_gejala_rule="<!?php echo $t_r->ID_GEJALA; ?>"
+                    kategori_usia_rule_gejala="<!?php echo $t_r->ID_USIA; ?>"
+                    rule_jwb_y="<!?php echo $t_r->JWB_Y; ?>"                                                                         rule_jwb_m="<!?php echo $t_r->JWB_M; ?>"
+                    rule_jwb_t="<!?php echo $t_r->JWB_T; ?>"                                                                                        
+                    id_rule="<!?php echo $t_r->ID_RULE; ?>"
+                                                                                                            
+                                                                                                            
+                       
+                        data-toggle="modal" data-target="#modal_edit_rule"><i class="lnr lnr-pencil"></i>Edit</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </center></td>
+          <td><center>
+            <a class="btn btn-xs btn-danger tbl_hapus_rule" 
+               id_hps_rule="<!?php echo $t_r->ID_RULE; ?>"
+               hps_rule_gejala="<!?php echo $t_r->ID_GEJALA; ?>"
+               data-toggle="modal" data-target="#modal_hapus_rule"><i class="lnr lnr-trash"></i>&nbsp;Hapus</a>
+              </center></td>
+-->
+      </tr>
+        <?php } ?>
+      </tbody>
+  </table>
+        </div>
+    </div>
+    </div>
+
+</div>
+</div>
+                    
+
+
+<!--
+
+		<div class="main">
+			
 		<div class="col-md-6">
             <div class="main-content">
 				<div class="container-fluid">
@@ -14,14 +154,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="panel-heading">
 									<h3 class="panel-title">Input Data Rule</h3>
 								</div>
-								<form action="<?php echo base_url(). 'index.php/Welcome/tambahrule'; ?>" method="post" enctype="multipart/form-data">
+								<form action="<!-?php echo base_url(). 'index.php/Welcome/tambahrule'; ?>" method="post" enctype="multipart/form-data">
 								<div class="panel-body">
 									<div class="form-group">
 										  <label for="exampleSelect1">Pilih Kategori</label>
 											<select class="form-control" id="exampleSelect1" name="kd_kategori">											
-										  		<?php foreach($kategori as $k2){ ?>
-        										<option value="<?php echo $k2->kd_kategori?>"><?php echo $k2->nm_kategori?> </option>
-										  		<?php }?>								  
+										  		<!-?php foreach($kategori as $k2){ ?>
+        										<option value="<!-?php echo $k2->kd_kategori?>"><!-?php echo $k2->nm_kategori?> </option>
+										  		<!?php }?>								  
       										</select>
     								</div>
 									    <br>
@@ -43,142 +183,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 			</div>
 		</div>
-
-</br>
-		<!-- END MAIN -->
-		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">&copy; 2019 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
-			</div>
-		</footer>
-	</div>
-	<!-- END WRAPPER -->
-	<!-- Javascript -->
-	<script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/vendor/chartist/js/chartist.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/scripts/klorofil-common.js') ?>"></script>
-	<script>
-	$(function() {
-		var data, options;
-
-		// headline charts
-		data = {
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[23, 29, 24, 40, 25, 24, 35],
-				[14, 25, 18, 34, 29, 38, 44],
-			]
-		};
-
-		options = {
-			height: 300,
-			showArea: true,
-			showLine: false,
-			showPoint: false,
-			fullWidth: true,
-			axisX: {
-				showGrid: false
-			},
-			lineSmooth: false,
-		};
-
-		new Chartist.Line('#headline-chart', data, options);
-
-
-		// visits trend charts
-		data = {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			series: [{
-				name: 'series-real',
-				data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-			}, {
-				name: 'series-projection',
-				data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
-			}]
-		};
-
-		options = {
-			fullWidth: true,
-			lineSmooth: false,
-			height: "270px",
-			low: 0,
-			high: 'auto',
-			series: {
-				'series-projection': {
-					showArea: true,
-					showPoint: false,
-					showLine: false
-				},
-			},
-			axisX: {
-				showGrid: false,
-
-			},
-			axisY: {
-				showGrid: false,
-				onlyInteger: true,
-				offset: 0,
-			},
-			chartPadding: {
-				left: 20,
-				right: 20
-			}
-		};
-
-		new Chartist.Line('#visits-trends-chart', data, options);
-
-
-		// visits chart
-		data = {
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[6384, 6342, 5437, 2764, 3958, 5068, 7654]
-			]
-		};
-
-		options = {
-			height: 300,
-			axisX: {
-				showGrid: false
-			},
-		};
-
-		new Chartist.Bar('#visits-chart', data, options);
-
-
-		// real-time pie chart
-		var sysLoad = $('#system-load').easyPieChart({
-			size: 130,
-			barColor: function(percent) {
-				return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
-			},
-			trackColor: 'rgba(245, 245, 245, 0.8)',
-			scaleColor: false,
-			lineWidth: 5,
-			lineCap: "square",
-			animate: 800
-		});
-
-		var updateInterval = 3000; // in milliseconds
-
-		setInterval(function() {
-			var randomVal;
-			randomVal = getRandomInt(0, 100);
-
-			sysLoad.data('easyPieChart').update(randomVal);
-			sysLoad.find('.percent').text(randomVal);
-		}, updateInterval);
-
-		function getRandomInt(min, max) {
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-
-	});
-	</script>
-</body>
-
-</html>
+-->

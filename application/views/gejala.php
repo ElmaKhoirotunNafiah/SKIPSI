@@ -5,36 +5,48 @@
 					<!-- OVERVIEW -->
 					<div class="panel">
 				        <div class="panel-heading">
-                            <h3 class="panel-title">Input Kategori</h3>
+                            <h3 class="panel-title">Input Gejala</h3>
                         </div>
 				    <div class="panel-body">                      
                         
 <div class="container">
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#modal_kategori"><i class="fa fa-plus"></i>&nbsp;Tambah Kategori</button>
+  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#modal_gejala"><i class="fa fa-plus"></i>&nbsp;Tambah Gejala</button>
     <br>
     <br>
                 
 <!-- Modal -->
-  <div class="modal fade" id="modal_kategori" role="dialog">
+  <div class="modal fade" id="modal_gejala" role="dialog">
     <div class="modal-dialog">
     
 <!-- Modal content-->
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Input Kategori</h4>
+                <h4 class="modal-title">Input Gejala</h4>
         </div>
-    <form action="<?php echo base_url()?>/Kategori/insert_kategori" method="post">
+    <form action="<?php echo base_url()?>/Gejala/insert_gejala" method="post">
     <div class="modal-body">
           <!-- INPUT GROUPS -->
     <div class="panel">
         <div class="panel-body">
-        <label>Kategori</label>
+         <label>Aspek</label>
         <br>
             <div class="form-group">
-<!--				<input type="text" name="nm_kategori" class="form-control" placeholder="">-->
-                <textarea type="text" name="nm_kategori" rows="2" class="form-control" placeholder=""></textarea>
+                <select class="form-control" id="exampleSelect1" name="aspek">
+                <option value='' disabled selected>Pilih Aspek</option>";
+				    <option>Religi</option>
+                    <option>Sekolah</option>
+                    <option>Rumah</option>
+                    <option>Umum</option>
+      		    </select>
+            </div>
+            <br>
+            
+        <label>Gejala</label>
+        <br>
+            <div class="form-group">
+                <textarea type="text" name="gejala" rows="2" class="form-control" placeholder=""></textarea>
             </div>
          </div>
     </div>
@@ -53,16 +65,17 @@
 
 <div class="panel">                        
     <div class="container">
-        <h2>Data Kategori</h2>
-        <p>Berisi data kategori yang telah diupload sebelumnya.</p>  
+        <h2>Data Gejala</h2>
+        <p>Berisi data gejala yang telah diupload sebelumnya.</p>  
      <br>
         
     <div class="col-lg-10">
-    <table class="table table-hover">
+    <table class="table table-bordered">
     <thead>
       <tr>
         <th>No</th>
-        <th>Kategori</th>
+        <th>Aspek</th>  
+        <th>Gejala</th>
 <!--
         <th colspan="2">Opsi</th>
 -->
@@ -72,11 +85,12 @@
     <tbody>
         <?php
        $no = 1;
-                foreach($kategori as $kt){
+                foreach($gejala as $gj){
         ?>
       <tr>
         <td><?php echo $no++ ?></td>
-        <td><?php echo $kt->nm_kategori; ?></td> 
+        <td><?php echo $gj->aspek; ?></td>  
+        <td><?php echo $gj->nama_gejala; ?></td> 
 <!--
         <td><center>
             <a href="<!--?php echo base_url()?>Rule/pindah_edit_rule/<!--?php echo $t_r->ID_GEJALA; ?>"><button class="btn btn-xs btn-primary tbl_edit_rule"
@@ -103,5 +117,6 @@
 </div>
 </div>
                     
+
 
 
