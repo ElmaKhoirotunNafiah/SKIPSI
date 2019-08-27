@@ -1228,6 +1228,15 @@ class Naive extends CI_Controller {
 		}
 		//prediksi
 		for ($i=0; $i < 90; $i++) {
+			// $simpan = array(
+			// 	'id_anak' => $i+1,
+			// 	'religi' => $data['hasil'][$i][1],
+			// 	'sekolah' => $data['hasil'][$i][2],
+			// 	'rumah' => $data['hasil'][$i][3],
+			// 	'prilaku' => $data['hasil'][$i][4]
+			// );
+			// $this->Mnaive->input($simpan ,'hasil_training_detail');
+
 			$max = max($data['hasil'][$i][5],$data['hasil'][$i][6],$data['hasil'][$i][7],$data['hasil'][$i][8],$data['hasil'][$i][9],$data['hasil'][$i][10]);
 			if($max == $data['hasil'][$i][5]){
 				$data['hasil'][$i][11] = "Super";
