@@ -1,3 +1,4 @@
+<?php echo $this->session->userdata("nama"); ?>
 <div class="main">
 			<div class="main-content">
 				<div class="container-fluid">
@@ -43,7 +44,7 @@
 											</div>
 										</div>
 									</div><br><br>
-									<b><div class="text-center"><a href="<?php echo base_url ().'Home/kuis_home/'?>" class="btn btn-primary">Mulai Lakukan Penilaian</a></div></b>
+									<b><div class="text-center"><a href="<?php echo base_url ().'Home/kuis_home/1'?>" class="btn btn-primary">Mulai Lakukan Penilaian</a></div></b>
 								</div>
 								<!-- END AWARDS -->
 								

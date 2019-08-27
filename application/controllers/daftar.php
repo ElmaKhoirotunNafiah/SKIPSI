@@ -17,25 +17,24 @@ class Daftar extends CI_Controller {
    //fungsi daftar
     public function daftar()
         {
-//        var_dump($_POST);
-            $username=$_POST['username'];
-            $password=md5($_POST['password']);
-            $nama_lengkap=$_POST['nama_lengkap'];
-            $kelas=$_POST['kelas'];
-            $golongan=$_POST['golongan'];
+            $password     = md5($_POST['passworrd']);
+            $nama_lengkap = $_POST['nama_lengkap'];
+			$kelas        = $_POST['kelas'];
+			$username     = $_POST['users'];
+            $golongan     = $_POST['gol'];
         
         $fields=array(
-            'username'=>$username,
             'password'=>$password,
-            'nama_lengkap'=>$nama_lengkap,
+            'nama'=>$nama_lengkap,
             'kelas'=>$kelas,
-            'golongan'=>$golongan,
-            'status'=>1
+			'golongan'=>$golongan,
+			'username'=>$username,
+            'level'=>2
         );
-           $table="tbuser";
+		
+		$table="siswa";
         $this->M_Admin->saveData($table, $fields); 
-     redirect('Login');
-
+     	redirect('Login');
         
     }
     

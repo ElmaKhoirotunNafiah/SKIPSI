@@ -21,6 +21,17 @@ class M_Admin extends CI_Model{
         return $query;
 	}
 
+	public function getD($table, $where){
+		$this->db->from($table);
+		$this->db->where($where);
+		$query = $this->db->get();
+        return $query;
+	}
+	public function getGejala($id){
+		$data = $this->db->query("select * from gejala where id = $id");
+		return $data;
+	}
+
 	public function getQuery($q){
     	$query = $this->db->query($q);
     	return $query;

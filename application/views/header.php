@@ -68,9 +68,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo base_url('assets/img/user.png') ?>" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo base_url('assets/img/user.png') ?>" class="img-circle" alt="Avatar"> <span><?php echo $this->session->userdata("nama"); ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a href="<?php echo base_url('login/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 						</ul>
@@ -83,15 +83,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-                        <?php ?>
-						<li><a href="<?php echo base_url()?>Home"  <?php if ($status=='home'){?> class="active" <?php }?>><i class="fa fa-home"></i> <span>Home</span></a></li>
-                        <li><a href="<?php echo base_url()?>Raport"  <?php if ($status=='raport'){?> class="active" <?php }?>><i class="fa fa-book"></i> <span>Raport</span></a></li>
-						<li ><a href="<?php echo base_url()?>User" <?php if ($status=='user'){?> class="active" <?php }?>><i class="fa fa-id-badge"></i> <span>Data User</span></a></li>
-                        <li ><a href="<?php echo base_url()?>Kategori" <?php if ($status=='kategori'){?> class="active" <?php }?>><i class="fa fa-tasks"></i> <span>Kategori</span></a></li>
-                        <li ><a href="<?php echo base_url()?>Gejala" <?php if ($status=='gejala'){?> class="active" <?php }?>><i class="fa fa-heartbeat"></i> <span>Gejala</span></a></li>
-                        <li ><a href="<?php echo base_url()?>Rule" <?php if ($status=='rule'){?> class="active" <?php }?>><i class="fa fa-share-alt"></i> <span>Rule</span></a></li>
-                        <li ><a href="<?php echo base_url()?>Solusi" <?php if ($status=='solusi'){?> class="active" <?php }?>><i class="fa fa-suitcase"></i> <span>Solusi</span></a></li>
-                        <li ><a href="<?php echo base_url()?>Laporan" <?php if ($status=='laporan'){?> class="active" <?php }?>><i class="fa fa-bar-chart"></i> <span>Laporan</span></a></li>
+						<?php if($this->session->userdata("level") == 2){ ?>
+							<li><a href="<?php echo base_url()?>Home"  <?php if ($status=='home'){?> class="active" <?php }?>><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        	<li><a href="<?php echo base_url()?>Raport"  <?php if ($status=='raport'){?> class="active" <?php }?>><i class="fa fa-book"></i> <span>Raport</span></a></li>
+						<?php } ?>
+
+						<?php if($this->session->userdata("level") == 1){ ?>
+							<li ><a href="<?php echo base_url()?>User" <?php if ($status=='user'){?> class="active" <?php }?>><i class="fa fa-id-badge"></i> <span>Data User</span></a></li>
+							<li ><a href="<?php echo base_url()?>Kategori" <?php if ($status=='kategori'){?> class="active" <?php }?>><i class="fa fa-tasks"></i> <span>Kategori</span></a></li>
+							<li ><a href="<?php echo base_url()?>Gejala" <?php if ($status=='gejala'){?> class="active" <?php }?>><i class="fa fa-heartbeat"></i> <span>Gejala</span></a></li>
+							<li ><a href="<?php echo base_url()?>Rule" <?php if ($status=='rule'){?> class="active" <?php }?>><i class="fa fa-share-alt"></i> <span>Rule</span></a></li>
+							<li ><a href="<?php echo base_url()?>Solusi" <?php if ($status=='solusi'){?> class="active" <?php }?>><i class="fa fa-suitcase"></i> <span>Solusi</span></a></li>
+							<li ><a href="<?php echo base_url()?>Laporan" <?php if ($status=='laporan'){?> class="active" <?php }?>><i class="fa fa-bar-chart"></i> <span>Laporan</span></a></li>
+						<?php } ?>
+						
+						
 						
 						
                     </ul>

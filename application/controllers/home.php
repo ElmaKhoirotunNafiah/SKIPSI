@@ -6,7 +6,8 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper("url");
-         $this->load->model("M_Admin");
+		$this->load->model("M_Admin");
+		$this->load->database();
 //        if($this->session->userdata('username') !=TRUE ){
 //            redirect("login");
 //        }
@@ -19,91 +20,63 @@ class Home extends CI_Controller {
         $this->load->view('footer');
 	}
     
-//     public function kuisioner(){
-//        $id_dts=$this->session->userdata('id_deteksi');
-//        $id_usia=$this->session->userdata('id_usia');
-//        $data['status']="kuis";
-//        $data2['rule']=array();
-//        $data2['stt']='belum'; 
-//        
-//        //CARI PERNYATAAN PADA TABEL RULE YANG SESUAI DENGAN USIANYA 
-//        //COUNT DETAIL DETEKSI
-//        $where=array('ID_DETEKSI'=>$this->session->userdata('id_deteksi'));        
-//        $cek_data=$this->M_Admin->getData('detail_deteksi',$where, '','','1');
-//       //$data2['jumlah']=$cek_data->num_rows() ;
-//        //echo $id_usia;
-//        if (!isset($_POST['nextRule'])){ //Munculkan pernyataan pertama
-//            $data2['rule']=$this->M_Admin->getQuery("SELECT * FROM `rule` r, gejala g where r.id_gejala=g.id_gejala and r.id_usia=$id_usia and r.rl_status=1")->result();
-//                $this->load->view('user/vu_header',$data);
-//                $this->load->view('user/vu_kuisioner',$data2);
-//                $this->load->view('user/vu_footer');
-//        }else{ //munculkan pernyataan selanjutnya
-//            $rule = $_POST['id_rule'];
-//                $radio=$_POST['id_gjl'];
-//                $pjgradio = strlen($radio);
-//                $batas = strpos($radio,'|');
-//            ////////
-//                $gjl=substr($radio,0,$batas);
-//                $nilai=substr($radio,$batas+1,$pjgradio-$batas);
-//            
-//                $fields2=array(
-//                    'ID_RULE'=>$rule,
-//                    'ID_DETEKSI'=>$id_dts,
-//                    'JAWABAN'=>$nilai
-//                    );
-//                $table="detail_deteksi";
-//                $this->M_Admin->saveData($table, $fields2); 
-//                if($gjl != 0){ //jika pernyataan belum selesai
-//                    $data2['rule']=$this->M_Admin->getQuery("SELECT * FROM `rule` r, gejala g where r.id_gejala=g.id_gejala and r.id_usia=$id_usia and r.id_gejala=$gjl")->result();
-//                    $this->load->view('user/vu_header',$data);
-//                    $this->load->view('user/vu_kuisioner',$data2);
-//                    $this->load->view('user/vu_footer');
-//                }else{
-//                    //cek apakah dari pernyataan terakhir sudah memenuhi batas minimal
-//                    $ruleMin= $this->M_Admin->getQuery("SELECT * FROM `rule` where ID_RULE = $rule ")->result();
-//                    foreach ($ruleMin as $rl);
-//                    $bbt = $rl->BOBOT_MIN; $rl_min=$rl->RULE_MIN;
-//                    $jum_jwb=$this->M_Admin->getQuery("SELECT SUM(JAWABAN) as hasil FROM detail_deteksi where ID_DETEKSI=$id_dts")->result();
-//                    //$datatot=$jum_jwb->row_array();
-//                    //$tot=$datatot['HASIL'];
-//                    foreach($jum_jwb as $tot);
-//                    $total=$tot->hasil;
-//                    
-//                    if($total < $bbt){
-//                        $data2['rule']=$this->M_Admin->getQuery("SELECT * FROM `rule` r, gejala g where r.id_gejala=g.id_gejala and r.id_usia=$id_usia and r.id_gejala=$rl_min")->result();
-//                        $this->load->view('user/vu_header',$data);
-//                        $this->load->view('user/vu_kuisioner',$data2);
-//                        $this->load->view('user/vu_footer');
-//                    }else{
-//                       $data2['stt']='selesai';
-//                    
-//                        //cek usia, cek range di adiksi
-//                        $cek_adiksi=$this->M_Admin->getQuery("SELECT * from adiksi_gadget where ID_USIA=$id_usia AND AD_RANGE_MIN <= $total AND AD_RANGE_MAX >= $total ")->result();
-//                        foreach($cek_adiksi as $ads);
-//                        $adiksi=$ads->ID_ADIKSI;
-//
-//                        $fields3=array(
-//                            'ID_ADIKSI'=>$adiksi,
-//                            'HASIL_DETEKSI'=>$total
-//                        );
-//
-//                        $where3=array(
-//                            'ID_DETEKSI'=>$id_dts
-//                        );
-//                        $this->M_Admin->updateData("deteksi",$fields3,$where3);
-//                        $this->load->view('user/vu_header',$data);
-//                        $this->load->view('user/vu_kuisioner',$data2);
-//                        $this->load->view('user/vu_footer'); 
-//                    }
-//                    
-//                }
-//        }
-//    }
-    
-     public function kuis_home()
+     public function kuis_home($id)
     {
-        $data['status']="home";
-//       $data2['data_detail_artikel']=$this->M_Admin->getQuery("SELECT * FROM artikel where ID_ARTIKEL=$id")->result();
+		$user = $this->session->userdata("id");
+		$cek_hari = $this->db->query("SELECT * FROM hasil_testing WHERE id_anak = $user ORDER BY hari_ke DESC LIMIT 1 ");
+		
+		
+		//echo $cek_hari->num_rows();
+
+		if($cek_hari->num_rows() > 0){
+			$h = $cek_hari->row_array();
+			$temp_h = $h['hari_ke'];
+			$temp_b = $h['bulan_ke'];
+			$cek_jumlah = $this->db->query("SELECT COUNT(hari_ke) as jumlah_gejala FROM hasil_testing WHERE id_anak = $user AND hari_ke = $temp_h AND bulan_ke = $temp_b ")->row_array();
+			$cek_bulan = $this->db->query("SELECT COUNT(bulan_ke) as jumlah_bulan FROM hasil_testing WHERE id_anak = $user AND bulan_ke = $temp_b")->row_array();
+			//jika jumlah data pada bulan ke-x 504 maka bulan ditambah 1 dan hari kembali ke 1
+			if($cek_bulan['jumlah_bulan'] == 504){
+				$bulan = $temp_b+1;
+				$hari = 1;
+			} else {
+			//jika tidak maka bulan tetap 
+				$bulan = $temp_b;
+			//jika jumlah gejala pada harike dan bulan ke yg sama 
+			//jumlah gejala = 18 maka hari ditambah 1 
+				if($cek_jumlah['jumlah_gejala'] == 18){
+					$hari = $h['hari_ke']+1;
+			//jika tidak maka hari tetap sama
+				} else {
+					$hari = $h['hari_ke'];
+				}
+			}
+		} else {
+			$hari = 1;
+		}
+		if($this->input->post('id_gejala') != ''){
+			$gejala = $this->input->post('id_gejala');
+			$kondisi = $this->input->post('id_gjl');
+			
+
+			$fields=array(
+				'id_anak'  => $user,
+				'kondisi'  => $kondisi,
+				'gejala'   => $gejala,
+				'hari_ke'  => $hari,
+				'bulan_ke' => $bulan,
+				'waktu'    => date("Y-m-d H:i:s")
+			);
+			
+			$table = "hasil_testing";
+			$this->M_Admin->saveData($table, $fields); 
+			
+		}
+		$data['hari_ke'] = $hari;
+		$data['bulan_ke'] = $bulan;
+        $data['status'] = "home";
+		$data['gej'] = $id;
+		$data['gejala'] = $this->M_Admin->getGejala($id)->result();
+
         $this->load->view('header',$data);
 		$this->load->view('home');
         $this->load->view('footer',$data);

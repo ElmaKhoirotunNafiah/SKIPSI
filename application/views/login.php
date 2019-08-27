@@ -41,21 +41,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="logo text-center"><img width="130px" height="80px" src="<?php echo base_url ()?>assets/img/logo_ss.png" alt="Klorofil Logo"></div>
 								<p class="lead">Login</p>
 							</div>
-							<form class="form-auth-small" action="<?php echo base_url()?>/Login/login">
+							<form class="form-auth-small" action="<?php echo base_url()?>Login/login" method="post">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Username</label>
-									<input type="username" class="form-control" id="signin-email" placeholder="Username">
+									<input type="text" class="form-control" name="username" placeholder="Username">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" id="signin-password"  placeholder="Password">
+									<input type="password" class="form-control" id="signin-password" name="password"  placeholder="Password">
 								</div>
-								<div class="form-group clearfix">
-									<label class="fancy-checkbox element-left">
-										<input type="checkbox">
-										<span>Remember me</span>
-									</label>
-								</div>
+								
 								<button type="submit" class="btn btn-primary btn-md btn-block">Login</button>
 								<div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock">&nbsp;Belum Memiliki Akun ? </i> <a href="<?php echo base_url()?>/Daftar">&nbsp; | Daftar |</a></span>

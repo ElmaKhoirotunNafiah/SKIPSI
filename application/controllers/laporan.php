@@ -14,7 +14,7 @@ class Laporan extends CI_Controller {
 	public function index()
 	{
         $data1['status']='laporan';
-        $data['laporan'] =$this->M_Admin->getQuery("SELECT * FROM hasil join user_anak ON hasil.id_anak=user_anak.id_anak")->result();
+        $data['laporan'] =$this->M_Admin->getQuery("SELECT * FROM hasil join user_anak ON hasil.anak_id=user_anak.id")->result();
         $this->load->view('header', $data1);
         $this->load->view('laporan',$data);
         $this->load->view('footer');

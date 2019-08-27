@@ -51,15 +51,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
                                 <div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Golongan</label>
-									<input type="text"  name="golongan" class="form-control" id="golongan" placeholder="Golongan">
+									<input type="text"  name="gol" class="form-control" id="golongan" placeholder="Golongan">
 								</div>
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Username</label>
-									<input type="text"  name="username" class="form-control" id="username" placeholder="Username">
+									<input type="text"  name="users" class="form-control" id="golongan" placeholder="Username">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password"  name="password" class="form-control" id="password"  placeholder="Password">
+									<input type="password"  name="passworrd" class="form-control" id="password"  placeholder="Password">
 								</div>
                                 <br>
 								<button type="submit" class="btn btn-primary btn-md btn-block">Daftar</button>
