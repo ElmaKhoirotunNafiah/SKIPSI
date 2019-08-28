@@ -4,81 +4,57 @@
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel">
-				        <div class="panel-heading">
-                            <h3 class="panel-title">Data Anak Kecanduan Gadget</h3>
-                        </div>
-				    <div class="panel-body">
-<!--                        <form action="<!?php echo base_url()?>laporan" method="post">-->
-<!--                        <div class="row">-->
-<!--
-                            <div class="col-lg-3">
-                        
-<select id="tahun" name="tahun" class="form-control">
-    <!?php foreach($tahun as $th){?>
-										<option <!?php if($thn==$th->tahun) echo "selected"; ?> value="<!?php echo $th->tahun?>"><!?php echo $th->tahun?></option>
-    <!?php } ?>
-                                </select></div>
--->
-<!--
-                             <div class="col-lg-3">
-                        <button type="submit" name="cari" class="btn btn-primary">Pilih</button>
-                         <br><br><br>
-                            </div>
--->
-<!--                            </div>-->
-<!--                            </form>-->
-<!--
-                        <div class="row">
-                           
-                             <div class="col-lg-2">
-                        <h4 ><b>Bulan : <!?php echo $bln." ".$thn?></b></h4>
-                                 </div>  
-                            </div>
--->
-<!--
-                                <table class="table table-striped" id="example">
-										<thead>
-											<tr>
-                                                <th>No.</th>
-                                                <th>Hasil</th>
-												<th>Solusi</th>
-											</tr>
-										</thead>
-										<tbody>
-                                            <?php
-                                                $no = 1;
-                                                foreach($laporan as $lp){
-                                            ?>
-											<tr>
-                                                <td><?php echo $no++ ?></td>
-												<td><?php echo $lp->hasil; ?></td>
-												<td><span class="label label-success"><?php echo $lp->AD_TINGKAT; ?></span></td>
-											</tr>
-											
-                                             <?php } ?>
-										</tbody>
-									</table>
+				        	<div class="panel-heading">
+                    <h3 class="panel-title">Data Hasil Prilaku Siswa</h3>
+                  </div>
+				    			<div class="panel-body">
+										<table class="table table-striped ">
+												<thead>
+													<tr>
+														<th>No</th>
+														<th>Bulan</th>
+														<th>Hasil</th>
+														<th>Detail</th>
+													</tr>
+												</thead>
+												<tbody>
+												<?php for($i = 0; $i < $panjang; $i++){ ?>
+														<tr>
+															<td><?php echo $i+1 ?></td>
+															<td><b><?php echo $hasil[$i][0] ?></b></td>
 
--->
-<table class="table table-striped ">
-    <thead>
-      <tr>
-<!--        <th>Bulan</th>-->
-        <th>Hasil</th>
-        <th>Solusi</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($nilai_raport as $nr){ ?>
-      <tr>
-        <td><?php echo $nr->hasil?></td>
-        <td><a href="<1?php echo base_url()?>Cu_deteksi/hasil_akhir_kuisioner/<!?php echo $rwa->ID_DETEKSI;?>"><span class="btn btn-info"><i class="fa fa-eye"></i>&nbsp; Detail </span></a></td>
-      </tr>
-        <?php } ?>
-    </tbody>
-  </table>
-                        </div>
-								
-							</div>
+															<td><?php if($hasil[$i][1] == 1){ ?>
+																	<span class="label label-danger">Sangat Kurang</span>
+																<?php } elseif($hasil[$i][1] == 2){ ?>
+																	<span class="label label-warning">Kurang</span>
+																<?php } elseif($hasil[$i][1] == 3){ ?>
+																	<span class="label label-default">Cukup</span>
+																<?php } elseif($hasil[$i][1] == 4){ ?>
+																	<span class="label label-info">Baik</span>
+																<?php } elseif($hasil[$i][1] == 5){ ?>
+																	<span class="label label-success">Sangat Baik</span>
+																<?php } elseif($hasil[$i][1] == 6){ ?>
+																	<span class="label label-primary">Super</span>
+																<?php } else { ?> 
+																	---
+																<?php } ?></td>
+
+															<td><?php if($hasil[$i][2] == 'selesai'){ ?>
+																<a href="<?php echo base_url('raport/detail_raport') ?>"><span class="btn btn-info"> Detail &nbsp;<i class="fa fa-eye"></i></span></a>
+															<?php } else { ?>
+																<button class="btn btn-danger" disabled> Belum selesai</button>
+															<?php } ?></td>
+														</tr>
+													<!-- <tr>
+														<td>1</td>
+														<td>Pertama</td>
+														<td><span class="label label-success">Sangat Baik</span></td>
+														<td><a href="<?php echo base_url('raport/detail_raport') ?>"><span class="btn btn-info"><i class="fa fa-eye"></i>&nbsp; Detail </span></a></td>
+													</tr> -->
+												<?php } ?>
+												</tbody>
+											</table>
+             </div>		
+			</div>
 </div>
 
