@@ -52,6 +52,7 @@ class Home extends CI_Controller {
 			}
 		} else {
 			$hari = 1;
+			$bulan = 1;
 		}
 		if($this->input->post('id_gejala') != ''){
 			$gejala = $this->input->post('id_gejala');
