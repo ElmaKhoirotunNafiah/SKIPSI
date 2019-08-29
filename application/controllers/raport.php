@@ -8,9 +8,9 @@ class Raport extends CI_Controller {
 		$this->load->helper("url");
 		 $this->load->model("M_Admin");
 		 $this->load->database();
-//        if($this->session->userdata('username') !=TRUE ){
-//            redirect("login");
-//        }
+       if($this->session->userdata('status') != 'login' ){
+           redirect("login");
+       }
 	}
 	public function index()
 	{
@@ -94,8 +94,8 @@ class Raport extends CI_Controller {
 					$has = "Super";
 				}
 
-				echo $religi.' ,'.$sekolah.' ,'.$rumah.' ,'.$hasil.'<br>';
-				echo $rel.' ,'.$sek.' ,'.$rum.' ,'.$has.'<br>';
+				// echo $religi.' ,'.$sekolah.' ,'.$rumah.' ,'.$hasil.'<br>';
+				// echo $rel.' ,'.$sek.' ,'.$rum.' ,'.$has.'<br>';
 
 				//Religi
 				if($rel == 'Super'){
@@ -146,7 +146,7 @@ class Raport extends CI_Controller {
 				$ru = $this->db->query("SELECT super FROM rumah WHERE id_rumah = $temp_rum")->row_array();
 				$se = $this->db->query("SELECT super FROM sekolah WHERE id_sekolah = $temp_sek")->row_array();
 				$super = $re['super']*$ru['super']*$se['super']*$nilai_gejala[0];
-				echo $re['super'].' ,'.$ru['super'].','.$se['super'].' ,'.$nilai_gejala[0].'<br>';
+				// echo $re['super'].' ,'.$ru['super'].','.$se['super'].' ,'.$nilai_gejala[0].'<br>';
 
 				//sangat Baik
 				$re = $this->db->query("SELECT sangat_baik FROM religi WHERE id_religi = $temp_rel")->row_array();
@@ -178,30 +178,50 @@ class Raport extends CI_Controller {
 				$se = $this->db->query("SELECT sangat_kurang FROM sekolah WHERE id_sekolah = $temp_sek")->row_array();
 				$sangat_kurang = $re['sangat_kurang']*$ru['sangat_kurang']*$se['sangat_kurang']*$nilai_gejala[5];
 
-				echo $super.' ,'.$sangat_baik.' ,'.$baik.' ,'.$cukup.' ,'.$kurang.' ,'.$sangat_kurang;
+				// echo $super.' ,'.$sangat_baik.' ,'.$baik.' ,'.$cukup.' ,'.$kurang.' ,'.$sangat_kurang;
 				$prediksi = max($super,$sangat_baik,$baik,$cukup,$kurang,$sangat_kurang);
 
 				if($prediksi == $super){
 					$data['hasil'][$i][1] = 6;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 6")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				} elseif ($prediksi == $sangat_baik){
 					$data['hasil'][$i][1] = 5;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 5")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				} elseif ($prediksi == $baik){
 					$data['hasil'][$i][1] = 4;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 4")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				} elseif ($prediksi == $cukup){
 					$data['hasil'][$i][1] = 3;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 3")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				} elseif ($prediksi == $kurang){
 					$data['hasil'][$i][1] = 2;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 2")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				} else {
 					$data['hasil'][$i][1] = 1;
+					$solusi = $this->db->query("SELECT * FROM data_solusi WHERE kd_kategori = 1")->row_array();
+					$data['hasil'][$i][2] = $solusi['motivasi'];
+					$data['hasil'][$i][3] = $solusi['solusi'];
 				}
 
 
 			} else {
+				$data['hasil'][$i][2] = "Belum Selesai";
+				$data['hasil'][$i][3] = "Belum Selesai";
 				$status = 'belum selesai';
 				$data['hasil'][$i][1] = 0; //hasil
 			}
 			$data['hasil'][$i][0] = $i+1; //bulan-ke
-			$data['hasil'][$i][2] = $status; //status selesai apa belum
+			$data['hasil'][$i][4] = $status; //status selesai apa belum
 		}
 
         $data['status'] = 'raport';
@@ -209,10 +229,96 @@ class Raport extends CI_Controller {
         $this->load->view('raport', $data);
         $this->load->view('footer');
 	}
-	public function detail_raport()
+	public function detail_raport($bulan)
 	{
         $data['status'] = 'raport';
-        //$data['nilai_raport'] =$this->M_Admin->getQuery("SELECT * FROM hasil join data_solusi ON hasil.kd_solusi=data_solusi.kd_solusi")->result();
+		$user = $this->session->userdata("id");
+		$nilai_gejala = array(0.43333333333333, 0.21111111111111, 0.23333333333333, 0.088888888888889, 0.033333333333333, 0);
+		$data_hasil = $this->db->query("SELECT * FROM hasil_testing WHERE bulan_ke = $bulan AND id_anak = $user")->result();
+
+		for($j = 1; $j <= 18; $j++){
+			$gejala = "G".$j;
+			$get = $this->db->query("SELECT SUM(kondisi) AS jumlah FROM hasil_testing WHERE id_anak = $user AND bulan_ke = $bulan AND gejala = '$gejala'")->row_array();
+			$nilai[$j-1] = $get['jumlah']*100/84;
+			//echo $get['jumlah'].'<br>';
+		}
+		$religi =  ($nilai[0]+$nilai[1]+$nilai[2]+$nilai[3]+$nilai[4]+$nilai[5])/6;
+		$sekolah =  ($nilai[6]+$nilai[7]+$nilai[8]+$nilai[9]+$nilai[10]+$nilai[11])/6;
+		$rumah =  ($nilai[12]+$nilai[13]+$nilai[14]+$nilai[15]+$nilai[16]+$nilai[17])/6;
+		$hasil = ($religi+$sekolah+$rumah)/3;
+
+		if(($religi>10)&&($religi<19)){
+			$rel = "Sangat Kurang";
+		} elseif (($religi>20)&&($religi<29)){
+			$rel = "Kurang";
+		} elseif (($religi>30)&&($religi<49)){
+			$rel = "Cukup";
+		} elseif (($religi>50)&&($religi<74)){
+			$rel = "Baik";
+		} elseif (($religi>75)&&($religi<84)){
+			$rel = "Sangat Baik";
+		} else {
+			$rel = "Super";
+		}
+		if(($sekolah>10)&&($sekolah<19)){
+			$sek = "Sangat Kurang";
+		} elseif (($sekolah>20)&&($sekolah<29)){
+			$sek = "Kurang";
+		} elseif (($sekolah>30)&&($sekolah<49)){
+			$sek = "Cukup";
+		} elseif (($sekolah>50)&&($sekolah<74)){
+			$sek = "Baik";
+		} elseif (($sekolah>75)&&($sekolah<84)){
+			$sek = "Sangat Baik";
+		} else {
+			$sek = "Super";
+		}
+		if(($rumah>10)&&($rumah<19)){
+			$rum = "Sangat Kurang";
+		} elseif (($rumah>20)&&($rumah<29)){
+			$rum = "Kurang";
+		} elseif (($rumah>30)&&($rumah<49)){
+			$rum = "Cukup";
+		} elseif (($rumah>50)&&($rumah<74)){
+			$rum = "Baik";
+		} elseif (($rumah>75)&&($rumah<84)){
+			$rum = "Sangat Baik";
+		} else {
+			$rum = "Super";
+		}
+		if(($hasil>10)&&($hasil<19)){
+			$has = "Sangat Kurang";
+		} elseif (($hasil>20)&&($hasil<29)){
+			$has = "Kurang";
+		} elseif (($hasil>30)&&($hasil<49)){
+			$has = "Cukup";
+		} elseif (($hasil>50)&&($hasil<74)){
+			$has = "Baik";
+		} elseif (($hasil>75)&&($hasil<84)){
+			$has = "Sangat Baik";
+		} else {
+			$has = "Super";
+		}
+
+		
+		//kategori
+		$data['hasil'][0][0] = 'Religi';
+		$data['hasil'][1][0] = 'Sekolah';
+		$data['hasil'][2][0] = 'Rumah';
+
+		//Nilai
+		$data['hasil'][0][1] = $religi;
+		$data['hasil'][1][1] = $sekolah;
+		$data['hasil'][2][1] = $rumah;
+
+		//hasil
+		$data['hasil'][0][2] = $rel;
+		$data['hasil'][1][2] = $sek;
+		$data['hasil'][2][2] = $rum;
+
+		$data['seluruh'] = $has;
+		$data['bulan'] = $bulan;
+
         $this->load->view('header', $data);
         $this->load->view('detail_raport', $data);
         $this->load->view('footer');

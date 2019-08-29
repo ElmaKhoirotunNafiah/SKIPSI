@@ -14,6 +14,8 @@
 														<th>No</th>
 														<th>Bulan</th>
 														<th>Hasil</th>
+														<th>Motivasi</th>
+														<th>Solusi</th>
 														<th>Detail</th>
 													</tr>
 												</thead>
@@ -38,9 +40,10 @@
 																<?php } else { ?> 
 																	---
 																<?php } ?></td>
-
-															<td><?php if($hasil[$i][2] == 'selesai'){ ?>
-																<a href="<?php echo base_url('raport/detail_raport') ?>"><span class="btn btn-info"> Detail &nbsp;<i class="fa fa-eye"></i></span></a>
+															<td><b><?php echo $hasil[$i][2] ?></b></td>
+															<td><b><?php echo $hasil[$i][3] ?></b></td>
+															<td><?php if($hasil[$i][4] == 'selesai'){ ?>
+																<a href="<?php echo base_url('raport/detail_raport/'.$hasil[$i][0]) ?>"><span class="btn btn-info"> Detail &nbsp;<i class="fa fa-eye"></i></span></a>
 															<?php } else { ?>
 																<button class="btn btn-danger" disabled> Belum selesai</button>
 															<?php } ?></td>

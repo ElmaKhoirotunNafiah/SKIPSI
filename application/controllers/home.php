@@ -8,9 +8,9 @@ class Home extends CI_Controller {
 		$this->load->helper("url");
 		$this->load->model("M_Admin");
 		$this->load->database();
-//        if($this->session->userdata('username') !=TRUE ){
-//            redirect("login");
-//        }
+		if($this->session->userdata('status') != 'login' ){
+			redirect("login");
+		}
 	}
 	public function index()
 	{
@@ -86,7 +86,6 @@ class Home extends CI_Controller {
     public function detail_kuis_home()
     {
         $data['status']="home";
-//       $data2['data_detail_artikel']=$this->M_Admin->getQuery("SELECT * FROM artikel where ID_ARTIKEL=$id")->result();
         $this->load->view('header',$data);
 		$this->load->view('home_detail');
         $this->load->view('footer',$data);
