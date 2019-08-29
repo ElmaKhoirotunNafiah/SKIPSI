@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="<?php echo base_url('assets/img/logo-dark.png') ?>" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img width="90px" height="30px" src="<?php echo base_url('assets/img/logo_ss.png') ?>" alt="Klorofil Logo" class="logo text-center"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo base_url('assets/img/user.png') ?>" class="img-circle" alt="Avatar"> <span><?php echo $this->session->userdata("nama"); ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo base_url('assets/img/siswa.png') ?>" class="img-circle" alt="Avatar"> <span><?php echo $this->session->userdata("nama"); ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?php echo base_url('login/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php } ?>
 
 						<?php if($this->session->userdata("level") == 1){ ?>
-							<li ><a href="<?php echo base_url()?>User" <?php if ($status=='user'){?> class="active" <?php }?>><i class="fa fa-id-badge"></i> <span>Data User</span></a></li>
+							<!-- <li ><a href="<?php echo base_url()?>User" <?php if ($status=='user'){?> class="active" <?php }?>><i class="fa fa-id-badge"></i> <span>Data User</span></a></li> -->
 							<li ><a href="<?php echo base_url()?>Kategori" <?php if ($status=='kategori'){?> class="active" <?php }?>><i class="fa fa-tasks"></i> <span>Kategori</span></a></li>
 							<li ><a href="<?php echo base_url()?>Gejala" <?php if ($status=='gejala'){?> class="active" <?php }?>><i class="fa fa-heartbeat"></i> <span>Gejala</span></a></li>
 							<li ><a href="<?php echo base_url()?>Rule" <?php if ($status=='rule'){?> class="active" <?php }?>><i class="fa fa-share-alt"></i> <span>Rule</span></a></li>

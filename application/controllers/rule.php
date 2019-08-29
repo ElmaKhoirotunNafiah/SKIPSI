@@ -14,7 +14,7 @@ class Rule extends CI_Controller {
 	public function index()
 	{
         $data1['status']='rule';
-        $data['tampil_rule'] =$this->M_Admin->getQuery("SELECT * FROM data_rule join gejala on data_rule.id_gejala=gejala.id_gejala")->result();
+        $data['tampil_rule'] =$this->M_Admin->getQuery("SELECT * FROM data_rule join gejala on data_rule.id_gejala=gejala.id")->result();
         $data['pertanyaan_awal']=$this->M_Admin->getQuery("SELECT * FROM gejala")->result();
         $this->load->view('header', $data1);
         $this->load->view('rule',$data);

@@ -98,7 +98,7 @@
       <tr>
         <td><?php echo $no++ ?></td>
         <td><?php echo $sl->nm_kategori; ?></td>
-        <td><?php echo $sl->keterangan; ?></td>  
+        <td><?php echo $sl->solusi; ?></td>  
         <td><?php echo $sl->motivasi; ?></td> 
 <!--
         <td><center>

@@ -41,7 +41,7 @@ class Login extends CI_Controller {
 			if($data['level'] == 2){
 				redirect(base_url("home"));
 			} else {
-				redirect(base_url("user"));
+				redirect(base_url("kategori"));
 			}
         }else{
 			echo "Username dan password salah !";

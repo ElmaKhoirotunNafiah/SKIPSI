@@ -16,7 +16,7 @@
 							<p>Hari Ke  &nbsp;&nbsp;&nbsp;= <?php echo $hari_ke ?></p>
 							<p>Bulan Ke = <?php echo $bulan_ke ?></p>
 							<?php foreach($gejala as $g){ ?>
-								<input type="text" name="id_gejala" value="<?php echo $g->gejala_id ?>" hidden>
+								<input type="text" name="id_gejala" value="<?php echo $g->id ?>" hidden>
 								<input type="text" name="id" value="<?php echo $g->id ?>" hidden>  			
 							<h2><b><p class="text-center"><?php 
 																echo $g->nama_gejala;
